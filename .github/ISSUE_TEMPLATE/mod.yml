@@ -1,0 +1,14 @@
+name: 游戏问题
+description: 报告显示、操作或判定问题
+title: "[Bug] "
+body:
+  - type: input
+    id: order
+    attributes:
+      label: 章节和订单编号
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤、实际结果和预期结果
+    validations:
+      required: true

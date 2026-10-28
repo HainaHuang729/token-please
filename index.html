@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#213958">
+<meta name="description" content="模型中转站：核对订单、上游回执、模型授权与交付，识破套牌和伪造记录。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Token, Please!：请出示你的上游">
+
+<meta property="og:description" content="五章递进规则，三十份订单。每次验收都以合同与可信回执为据。">
+<meta name="twitter:card" content="summary_large_image">
+<title>Token, Please!：请出示你的上游</title>
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABLUlEQVR42t1Xyw2DMAxNokxRdQ4OzJEDh4oZGIAjAzAD4sCBOTh0DsQa7aVIVho7cSANqo989J6fX2Jbik887reX+GGM6yaFEELlAIeYMgc4DB3zU2MK5/N+fqYjAEGbaXETqEo2maASNKZAQbHoqzKIBElgz5oLbitCEUEJxGQdo4YSmUMdyX7u6jADTwt6chQXHAP1kcFIsEtg2uELbO5qYdrhvBL4MoQkbPDQsjgvIkp+COrKlnoHy2CfCM2V35XlkRJorvyh34QS0pzMKULJTbgDu+Te/cE1IMsDvjpDf3DUUHY/hy0VkxiC2PcCBe7qCeyLiCpBcg9QGcaa0NmOz2zFvpassNkO88LfzQPXHckuMZReZixPuZhkX83UvqXmiHHdpIKrco71/A3Xf8M4EeFWCQAAAABJRU5ErkJggg==">
+<style>
+  html, body { margin: 0; height: 100%; background: #dce6f0; overflow: hidden; }
+  body { display: flex; align-items: center; justify-content: center; font-family: system-ui, sans-serif; }
+  canvas {
+    display: block; image-rendering: pixelated; image-rendering: crisp-edges;
+    touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+  }
+  @media (pointer: fine) { canvas { cursor: none; } }
+  .ui { position: fixed; top: 6px; right: 8px; display: flex; gap: 6px; z-index: 2; }
+  .ui button {
+    font: 12px system-ui, sans-serif; color: #e2edf8; background: #213958;
+    border: 1px solid #6b87a8; border-radius: 2px; padding: 3px 8px; cursor: pointer;
+  }
+  .ui button:focus-visible { outline: 2px solid #e5bb5d; outline-offset: 2px; }
+  .ui button:hover { color: #ffffff; }
+  @media (max-height: 500px) { .ui { top: 2px; right: 2px; opacity: 0.55; } .ui button { font-size: 10px; padding: 1px 5px; } }
+  #rotate {
+    display: none; position: fixed; inset: 0; z-index: 3; background: #e7eef6;
+    color: #20334e; font-size: 16px; text-align: center; align-items: center; justify-content: center;
+    flex-direction: column; gap: 10px; padding: 24px;
+  }
+  #rotate small { color: #64768c; font-size: 13px; }
+  @media (orientation: portrait) and (max-width: 700px) { #rotate.show { display: flex; } }
+  noscript { color: #ffffff; }
+</style>
+</head>
+<body>
+<canvas id="game" width="640" height="360" aria-label="Token, Please!：请出示你的上游 游戏画面"></canvas>
+<div class="ui">
+  <button id="mute" type="button">声音：开</button>
+  <button id="full" type="button">全屏</button>
+</div>
+<div id="rotate" class="show">
+  <div>把手机横过来玩</div>
+  <small>竖屏也能玩，但字会很小</small>
+  <button type="button" onclick="this.parentNode.classList.remove('show')" style="margin-top:8px;padding:6px 14px">先竖着玩</button>
+</div>
+<noscript>这个游戏需要开启 JavaScript。</noscript>
+<script src="assets.js"></script>
+<script src="en.js"></script>
+<script src="i18n.js"></script>
+<script src="gfx.js"></script>
+<script src="sfx.js"></script>
+<script src="docs.js"></script>
+<script src="data.js"></script>
+<script src="booth.js"></script>
+<script src="events.js"></script>
+<script src="screens.js"></script>
+<script src="main.js"></script>
+<script src="relay-cases.js"></script>
+<script src="nightshift.js"></script>
+<script src="chapters.js"></script>
+<script src="relay-banter.js"></script>
+<script src="relay-challenges.js"></script>
+<script src="relay-masks.js"></script>
+<script src="console-ui.js"></script>
+<script src="ui-polish.js"></script>
+<script>
+  document.getElementById('mute').addEventListener('click', () => toggleMute());
+  const fullBtn = document.getElementById('full');
+  const root = document.documentElement;
+  if (!root.requestFullscreen && !root.webkitRequestFullscreen) fullBtn.style.display = 'none';
+  fullBtn.addEventListener('click', () => {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      return;
+    }
+    const p = (root.requestFullscreen || root.webkitRequestFullscreen).call(root);
+    if (p && p.then) p.then(() => screen.orientation && screen.orientation.lock && screen.orientation.lock('landscape').catch(() => {})).catch(() => {});
+  });
+</script>
+</body>
+</html>
