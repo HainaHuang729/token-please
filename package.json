@@ -3,10 +3,10 @@
     "playwright": "^1.64.1"
   },
   "name": "token-please",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": true,
   "description": "A pixel-art model relay inspection game",
   "scripts": {
-    "test": "node test-flow.mjs && node test-theme-audit.mjs && node test-challenges.mjs && node test-masks.mjs && node test-banter.mjs && node test-console-ui.mjs && node test-ui-motion.mjs"
+    "test": "node test-flow.mjs && node test-theme-audit.mjs && node test-challenges.mjs && node test-masks.mjs && node test-banter.mjs && node test-console-ui.mjs && node test-ui-motion.mjs && node test-portrait-motion.mjs"
   }
 }

@@ -16,4 +16,4 @@ For development, run `npm ci`, `npx playwright install chromium`, start the loca
 
 Adapted from [IP, PLEASE](https://github.com/ip-please/ip-please.github.io) by ctnyanya, reference commit `5b6337c`. Original MIT and font OFL notices are retained. Reference-inspired character art is not automatically covered by the original code license.
 
-The campaign is currently Chinese only, uses a fixed case sequence, and has no mid-campaign save. Character speech uses a stable portrait and separate speaking indicator. All contracts and service records are fictional.
+The campaign is currently Chinese only, uses a fixed case sequence, and has no mid-campaign save. Characters breathe, blink and speak using localized changes on a stable portrait; reduced-motion mode remains still. Refined masks use separate generated prop artwork with per-character alignment. All contracts and service records are fictional.

@@ -308,6 +308,10 @@ def main():
     for name, im in (("font", font_sheet), ("atlas", sheet), ("bg", bg), ("win", wbg)):
         blobs[name], sizes[name] = png_b64(im)
 
+    mask_bytes = (SITE / "pixel-art/ai-cast/model-masks-v2.png").read_bytes()
+    blobs["masks"] = base64.b64encode(mask_bytes).decode("ascii")
+    sizes["masks"] = len(mask_bytes)
+
     data = {
         "font": {str(k): v for k, v in font_meta.items()},
         "sprites": pos,

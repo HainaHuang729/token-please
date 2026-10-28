@@ -1,5 +1,5 @@
 import {chromium} from 'playwright';import assert from 'node:assert/strict';
-const b=await chromium.launch();const p=await b.newPage({viewport:{width:1280,height:760}});const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto('http://localhost:8766');await p.waitForFunction(()=>typeof challengePatches!=='undefined'&&F&&ATLAS_IMG);
+const b=await chromium.launch();const p=await b.newPage({viewport:{width:1280,height:760}});const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto('http://localhost:8766');await p.waitForFunction(()=>typeof challengePatches!=='undefined'&&F&&ATLAS_IMG&&maskRegions.GPT&&maskRegions.CLAUDE);
 assert.deepEqual(await p.evaluate(()=>CHAPTERS.map(ch=>ch.cases.filter(c=>relayVerdict(c).decision==='deny').length)),[1,3,4,5,6]);
 assert.equal(await p.evaluate(()=>relayVerdict(CHAPTERS[1].cases[2]).fraud),false);
 assert.equal(await p.evaluate(()=>relayVerdict({...CHAPTERS[3].cases[1],charge:4}).decision),'approve');

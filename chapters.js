@@ -33,7 +33,7 @@ const chapterText=window.render_game_to_text;
 window.render_game_to_text=()=>JSON.stringify({...JSON.parse(chapterText()),chapter:chapterIndex+1,chapterTitle:chapter().name,chapterCount:CHAPTERS.length,rules:RULES.map(r=>r.head),campaignCorrect:S.stats?.correct||0});
 // Preserve the atlas's native pixel detail; avoid a second downsample and color crush.
 const portraitPixels=new Map();
-function pixelPortrait(key,x,y,w,h,crop=false,mask=null){
+function pixelPortrait(key,x,y,w,h,crop=false,mask=null,motion=null){
  key=key.split(':')[0]+':neutral';
  const a=SPR[key];if(!a)return;
  if(!portraitPixels.has(key)){
@@ -62,6 +62,7 @@ function pixelPortrait(key,x,y,w,h,crop=false,mask=null){
   if(!portraitPixels.has(mask+':neutral')){G.save();G.globalAlpha=0;pixelPortrait(mask+':neutral',0,0,180,128);G.restore();}
   source=maskedPortraitFrame(key,mask);
  }
+ if(!mask&&motion)source=animatedPortraitFrame(source,key,motion);
  G.save();G.imageSmoothingEnabled=false;
  if(crop){const side=Math.round(Math.min(w,h));G.drawImage(source,28,4,124,124,Math.round(x+(w-side)/2),Math.round(y+(h-side)/2),side,side);}
  else G.drawImage(source,Math.round(x),Math.round(y),Math.round(w),Math.round(h));

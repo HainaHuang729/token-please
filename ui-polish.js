@@ -141,7 +141,8 @@ drawWindow=function(){
  const e=B.ent,ex=entrantX(e);
  if(e&&ex!==null){
   G.save();if(!motionPreference.matches)G.globalAlpha=uiEaseOut((now-e.tEnter)/.18);
-  pixelPortrait(exprKey(e),motionPreference.matches?11:ex-90,0,180,128,false,e.spec.contract?.mask);G.restore();
+  const movement=portraitMotionState(e);
+  pixelPortrait(exprKey(e),motionPreference.matches?11:ex-90,movement.offset,180,128,false,e.spec.contract?.mask,movement);G.restore();
  }else{
   outline(77,32,125,67,'#7594b1');line(90,76,112,76,'#7594b1');line(101,68,101,76,'#7594b1');
   txt(101,89,'等待交付方接入',10,'#bcd1e5','ma');

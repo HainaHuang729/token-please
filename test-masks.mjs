@@ -1,5 +1,5 @@
 import {chromium} from 'playwright';import assert from 'node:assert/strict';
-const b=await chromium.launch();const p=await b.newPage({viewport:{width:1280,height:760}});const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto('http://localhost:8766');await p.waitForFunction(()=>typeof MASK_CASES!=='undefined'&&F&&ATLAS_IMG);
+const b=await chromium.launch();const p=await b.newPage({viewport:{width:1280,height:760}});const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto('http://localhost:8766');await p.waitForFunction(()=>typeof MASK_CASES!=='undefined'&&F&&ATLAS_IMG&&maskRegions.GPT&&maskRegions.CLAUDE);
 assert.equal(await p.evaluate(()=>MASK_CASES.length),7);
 for(const [ch,i,mask] of await p.evaluate(()=>MASK_CASES)){
  const info=await p.evaluate(({ch,i,mask})=>{
