@@ -45,13 +45,13 @@ function setLang(l) {
 function applyDomLang() {
   const root = document.documentElement;
   root.lang = LANG === 'en' ? 'en' : 'zh-CN';
-  document.title = T('IP, PLEASE · 请出示你的 IP');
+  document.title = T('Token, Please! · 请出示你的上游');
   for (const el of document.querySelectorAll('#full, #rotate div, #rotate small, #rotate button')) {
     if (el.dataset.zh === undefined) el.dataset.zh = el.textContent;
     el.textContent = T(el.dataset.zh);
   }
   const cv = document.getElementById('game');
-  if (cv) cv.setAttribute('aria-label', T('IP, PLEASE 游戏画面'));
+  if (cv) cv.setAttribute('aria-label', T('Token, Please! 游戏画面'));
   updateMuteLabel();
 }
 

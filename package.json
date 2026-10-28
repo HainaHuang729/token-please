@@ -3,7 +3,7 @@
     "playwright": "^1.64.1"
   },
   "name": "token-please",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "A pixel-art model relay inspection game",
   "scripts": {
