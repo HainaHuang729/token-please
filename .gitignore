@@ -12,3 +12,9 @@ dist/
 progress.md
 audit-original.mjs
 pixel-art/ai-cast/build.py
+
+# High-resolution working art retained locally and in codex/source-art-1.2.0.
+pixel-art/ai-cast/animations/*/source.png
+pixel-art/ai-cast/animations/*/cutout.png
+pixel-art/ai-cast/animations/*/raw-*.png
+pixel-art/ai-cast/animations/*/preview.gif

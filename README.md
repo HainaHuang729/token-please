@@ -54,7 +54,7 @@ F 全屏，M 静音。标题页「查看交付方档案」查看十角色。当�
 
 `nightshift.js` 负责验收场景、回执请求、欺诈标记、标题、图鉴和结算。核验在回执打印后生效，不能连续重复请求。`booth.js`、`docs.js` 和 `tools/pp/docs.py` 的按钮、规则书与印章已改为验收语境。
 
-`pixel-art/ai-cast/all-models-neutral.png` 与 `all-models-talk.png` 是用户十角色参考图生成的图集。`reference_cast.py` 切帧缩放，`tools/build_assets.py` 打包精灵和中文字形。角色保留图集原生 124×124 内容细节，取消二次缩小和色阶压缩；最近邻显示清晰像素边缘，小头像保持等比。静止与说话共用对齐底图，局部眨眼与口型配合一像素呼吸动作，避免整幅生成帧切换；减少动态效果模式保持静止。运行时清除分离杂点并裁去图集边缘。其他情绪暂回退至平静帧。
+本地 `pixel-art/ai-cast/animations/` 保存十位角色各自的 3×2 生成连环图、六张裁切帧、对齐记录和 GIF 预览。`manifest.json` 保留生成提示词。`tools/prepare_portrait_animation.py` 按固定网格裁切，共用缩放比例并对齐，固定非脸部底图；眼睑和嘴型使用生成图里的真实表情像素，不再用色块遮盖。`tools/build_assets.py` 将 60 帧嵌入图集。原生内容为 124×124，最近邻显示；眨眼依次播放半闭、全闭、半睁，说话播放两档口型，并保留一像素呼吸。减少动态效果模式保持静止，戴面具时面具保持刚性。原始 `all-models-neutral.png` 和 `all-models-talk.png` 作为参考与兼容底图保留。
 
 ## 构建与检查
 
@@ -84,3 +84,9 @@ node test-flow.mjs
 `relay-masks.js` 为七次出场配置另一模型的纸质面具，使用 `model-masks-v2.png` 独立生成的贴脸面具素材，按角色脸部坐标绘制面具与细绑带，保留本人的身体与头发；队列同步显示。面具不参与判定，授权订单仍可通过。运行 `node test-masks.mjs` 检查全部面具、说话稳定性和同装扮不同授权结果。
 
 `portrait-motion.js` 定义十位角色的脸部位置与局部动作。`node test-portrait-motion.mjs` 验证眨眼/口型不会改动身体区域、呼吸位移及减少动态效果行为。
+
+本地界面比较：顶部可切换复古终端、纸质审单台、调度控制室三版；`?design=terminal`、`?design=paper`、`?design=dispatch` 可直接选定。切换只改变绘制，不重置订单和材料位置。`ui-variants.js` 集中维护三版外观，`test-ui-variants.mjs` 覆盖三版拖单、核验、盖章、归还与持久化。面具直接取当前 GPT / Claude 原头像的脸部并绘制绑带、边缘，保持身份一致。
+
+正式站点默认采用复古终端 UI；设计切换栏仅在本地或带 `?design=` 的预览地址显示。
+
+公开仓库包含运行和重建图集所需的六帧裁切图；高分辨率原图、中间裁切图和 GIF 工作预览保留在本地备份分支 `codex/source-art-1.2.0`。

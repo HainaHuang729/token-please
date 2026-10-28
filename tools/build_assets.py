@@ -299,6 +299,15 @@ def main():
     bg = static_layer().copy()
     for i, im in enumerate(bg_patches(bg, static_layer("en"))):
         pk.add(f"bg:en:{i}", im)
+    for folder in sorted((SITE / "pixel-art/ai-cast/animations").iterdir()):
+        if not folder.is_dir():
+            continue
+        for i in range(6):
+            frame_path = folder / f"frame-{i}.png"
+            if frame_path.exists():
+                frame = Image.new("RGBA", (180, 128))
+                frame.paste(Image.open(frame_path).convert("RGBA"), (28, 4))
+                pk.add(f"anim:{folder.name.upper()}:{i}", frame, crop=False)
     sheet, pos = pk.build()
 
     wbg = window_bg().copy()

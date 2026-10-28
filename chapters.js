@@ -35,12 +35,14 @@ window.render_game_to_text=()=>JSON.stringify({...JSON.parse(chapterText()),chap
 const portraitPixels=new Map();
 function pixelPortrait(key,x,y,w,h,crop=false,mask=null,motion=null){
  key=key.split(':')[0]+':neutral';
- const a=SPR[key];if(!a)return;
+ const generated=SPR['anim:'+key.split(':')[0]+':0'];
+ const a=generated||SPR[key];if(!a)return;
  if(!portraitPixels.has(key)){
   const c=document.createElement('canvas');c.width=180;c.height=128;
   const g=c.getContext('2d');g.imageSmoothingEnabled=false;
   g.drawImage(ATLAS_IMG,a[0],a[1],a[2],a[3],a[4]||0,a[5]||0,a[2],a[3]);
-  // Remove detached atlas fragments; retain the main connected silhouette.
+  if(!generated){
+  // Remove detached legacy atlas fragments; generated frames are already registered.
   const im=g.getImageData(0,0,180,128),seen=new Uint8Array(180*128);let largest=[];
   for(let seed=0;seed<seen.length;seed++){
    if(seen[seed]||im.data[seed*4+3]<80)continue;
@@ -55,6 +57,7 @@ function pixelPortrait(key,x,y,w,h,crop=false,mask=null,motion=null){
   const keep=new Uint8Array(seen.length);largest.forEach(i=>keep[i]=1);
   for(let i=0;i<keep.length;i++)if(!keep[i]||i%180<32||i%180>147||Math.floor(i/180)>125)im.data[i*4+3]=0;
   g.putImageData(im,0,0);
+  }
   portraitPixels.set(key,c);
  }
  let source=portraitPixels.get(key);
