@@ -27,7 +27,7 @@ function verifyNight() {
   if(!e || e.phase!=='here' || !e.handed || e.verified) return;
   if(e.verifying)return;
   e.verifying=true;
-  printDoc(new Card(e.spec.receiptRows,{title:'回执核验单',sub:'CHECK',color:C.SAGE,colorD:C.SAGE_D,seal:false,valueX:42}),0.7,'receipt',()=>{if(B.ent===e){e.verified=true;e.verifying=false;}});
+  printDoc(new Card(e.spec.receiptRows,{title:e.spec.needsLog?'中转计费回执':'回执核验单',sub:'CHECK',color:C.SAGE,colorD:C.SAGE_D,seal:false,valueX:42}),0.7,'receipt',()=>{if(B.ent===e){e.verified=true;e.verifying=false;}});
   say('C','正在调取记录，请与订单逐项核对。');
   const receiptLine=chapterIndex===0?e.spec.reply:(e.spec.receiptLine||'记录已到，请按本单材料验收。');
   if(receiptLine)runSteps([['E',receiptLine,{hold:1.5}]],0.8);
@@ -65,7 +65,7 @@ judge=function(e,dec){
 hintText=function(){
  if(B.flash&&now<B.flash.t+3.2)return B.flash.text;
  const e=B.ent;
- if(!e)return '点左下「接单」，收取新订单';
+ if(!e)return '点窗口中央的交单图标，叫下一位';
  if(!e.handed)return '交付方正在提交订单';
  if(!B.docs.some(d=>d.owner==='ent'&&d.big))return '把左下订单拖到工作区';
  if(!e.verified)return '点「调取回执」，取得本单记录';
@@ -131,7 +131,7 @@ window.advanceTime=function(ms){nightOffset+=ms/1000;now+=ms/1000;update();rende
 window.render_game_to_text=()=>JSON.stringify({scene,showingRoster,caseCount:CASE_COUNT,cast:MODEL_CAST.map(x=>x[1]),coordinates:'640x360; origin top-left, x right, y down',
   processed:B?.total||0,correct:B?.correct||0,entrant:B?.ent?{name:B.ent.spec.name,portrait:B.ent.spec.person,mask:B.ent.spec.contract?.mask||null,phase:B.ent.phase,verified:!!B.ent.verified,verifying:!!B.ent.verifying,fraudMarked:!!B.ent.fraudMarked}:null,
   documents:B?.docs.map(d=>({key:d.key,x:d.x,y:d.y,big:d.big,rows:d.doc.rows,marks:d.marks}))||[],
-  controls:{fraud:[474,335],call:[15,298],verify:[168,275],tray:[628,222],approve:[483,220],deny:[562,220]}});
+  controls:{fraud:[474,335],call:center(SPEAKER),verify:[168,275],tray:[628,222],approve:[483,220],deny:[562,220]}});
 
 // Explain compliant differences instead of treating every different name as suspicious.
 const inspectRelayBase=inspectClick;

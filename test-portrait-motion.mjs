@@ -12,7 +12,7 @@ const data=await p.evaluate(()=>{
   const x=i%5*240,y=Math.floor(i/5)*240;g.fillStyle='#304b69';g.fillRect(x,y,240,240);g.fillStyle='white';g.font='12px monospace';g.fillText(key+'   idle / blink',x+5,y+14);g.drawImage(src,60,40,60,50,x,y+20,120,100);g.drawImage(blink,60,40,60,50,x+120,y+20,120,100);g.fillText('talk',x+5,y+135);g.drawImage(talk,60,40,60,50,x,y+140,120,100);
  });return {image:c.toDataURL(),checks};
 });for(const c of data.checks){assert(c.changed>0,c.key);assert.equal(c.outside,0,c.key+' '+c.kind);}fs.writeFileSync('output/portrait-animation-review.png',Buffer.from(data.image.split(',')[1],'base64'));
-await p.evaluate(()=>{newGame();go('booth');B.idx=2;B.ent=newEntrant(buildQueue()[1],true);handDocs(B.ent);advanceTime(500);});await p.screenshot({path:'output/mask-v2-live.png'});
+await p.evaluate(()=>{newGame();go('booth');B.idx=2;B.ent=newEntrant(relaySpec(CHAPTERS[0].cases[1],1),true);handDocs(B.ent);advanceTime(500);});await p.screenshot({path:'output/mask-v2-live.png'});
 assert.equal(await p.evaluate(()=>new Set([0,1,2,3].map(t=>portraitMotionState(B.ent,B.ent.tEnter+t).offset)).size)>1,true);
 assert.deepEqual(await p.evaluate(()=>[4.35,4.43,4.52,4.58].map(t=>portraitMotionState({spec:{person:MODEL_CAST[0][0]},tEnter:0,talkUntil:0},t).frame)),[1,2,3,0]);
 assert.equal(await p.evaluate(()=>[0,.5,1,2,3,4].every(t=>portraitMotionState({spec:{person:'GPT'},tEnter:0,talkUntil:0},t).offset===0)),true);

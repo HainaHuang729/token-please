@@ -1,0 +1,11 @@
+import {chromium} from 'playwright';import assert from 'node:assert/strict';
+const b=await chromium.launch(),p=await b.newPage({viewport:{width:1280,height:760}}),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto('http://localhost:8766/?design=paper&test=changed');await p.waitForFunction(()=>F&&ATLAS_IMG&&CHANGED_ORDER_TEST);
+const tick=async(ms)=>{for(let i=0;i<ms;i+=100)await p.evaluate(()=>advanceTime(100));};
+const click=async(x,y)=>{const r=await p.locator('canvas').boundingBox();await p.mouse.click(r.x+x*r.width/640,r.y+y*r.height/360);};
+await click(100,295);await tick(1000);await click(520,325);await tick(500);
+await p.mouse.move(0,0);await p.screenshot({path:'output/window-call-icon.png'});
+assert.deepEqual(JSON.parse(await p.evaluate(()=>render_game_to_text())).controls.call,[109,199]);
+await click(16,300);assert.equal(await p.evaluate(()=>B.ent),null);
+await click(109,199);await click(109,199);assert.equal(await p.evaluate(()=>B.idx),1);await tick(4200);assert.equal(await p.evaluate(()=>B.ent.handed),true);await p.screenshot({path:'output/window-call-arrived.png'});
+await p.evaluate(()=>{B.ent=null;B.docs=[];setInspect(true);});await click(109,199);assert.equal(await p.evaluate(()=>B.insp.on),false);assert.equal(await p.evaluate(()=>B.idx),2);
+await p.evaluate(()=>{B.ent=null;B.idx=B.queue.length;});await click(109,199);assert.equal(await p.evaluate(()=>B.ent),null);assert.deepEqual(errors,[]);await b.close();console.log('PASS window call icon: new target, old target removed, duplicate guard, entrant handover, compare-mode exit and empty queue');

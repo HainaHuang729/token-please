@@ -1,3 +1,4 @@
+import {unlockInquiry,reviewSupplement,collectFraudEvidence} from './investigation-test-helpers.mjs';
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -18,12 +19,12 @@ for(let ch=0;ch<5;ch++){
  const count=4+ch;
  assert.equal(await page.evaluate(()=>CASE_COUNT),count);
  assert.equal(await page.evaluate(()=>chapterIndex),ch);
- assert.equal(await page.evaluate(()=>RULES.filter(r=>r.isNew).length),ch===0?2:1);
+ assert.equal(await page.evaluate(()=>RULES.filter(r=>r.isNew).length),2);
  assert.equal(await page.evaluate(()=>new Set(CHAPTERS.slice(0,chapterIndex+1).flatMap(c=>c.cases.map(s=>s.person))).size),[3,5,7,9,10][ch]);
  await page.screenshot({path:'output/chapter-'+(ch+1)+'-desk.png'});
  for(let i=0;i<count;i++){
 
- await click(15,298);await tick(4500);
+ await click(109,199);await tick(4500);
  assert.equal(await page.evaluate(()=>B.ent.handed),true);
  await drag(54,270,465,200);
  if(i===0){await click(545,335);await page.screenshot({path:'output/contract.png'});await click(545,335);}
@@ -34,7 +35,9 @@ for(let ch=0;ch<5;ch++){
    await click(168,275);await tick(500);
    assert.equal(await page.evaluate(()=>B.docs.filter(d=>d.key==='receipt').length),1);
  }
- if(await page.evaluate(()=>B.ent.spec.fraud)){await click(474,335);assert.equal(await page.evaluate(()=>B.ent.fraudMarked),true);}
+ if(ch>=2){await click(196,275);await tick(2000);assert.equal(await page.evaluate(()=>B.ent.logVerified),true);}
+ if(await page.evaluate(()=>!!B.ent.spec.followup)){await unlockInquiry(page);await click(185,114);await tick(3200);assert.equal(await page.evaluate(()=>B.ent.supplementReady),true);await reviewSupplement(page);}
+ if(await page.evaluate(()=>B.ent.spec.fraud)){await collectFraudEvidence(page);await click(474,335);assert.equal(await page.evaluate(()=>B.ent.fraudMarked),true);}
  await page.screenshot({path:'output/cast-'+i+'.png'});
  if(i===0)await page.screenshot({path:'output/gpt.png'});
  if(i===1)await page.screenshot({path:'output/verified.png'});
@@ -52,7 +55,9 @@ for(let ch=0;ch<5;ch++){
  await tick(5000);assert.equal(await page.evaluate(()=>scene),'summary');
  await page.screenshot({path:'output/chapter-'+(ch+1)+'-summary.png'});
  await click(320,300);await tick(1000);
+ if(ch<4){assert.equal(await page.evaluate(()=>scene),'newspaper');await click(520,329);await tick(1000);}
  await page.screenshot({path:'output/chapter-next-'+(ch+1)+'.png'});
+ if(ch===4){assert.equal(await page.evaluate(()=>scene),'campaign-ending');assert.equal(await page.evaluate(()=>campaignEnding().id),'light');await page.screenshot({path:'output/ending-perfect.png'});await click(160,327);await tick(1000);}
  await click(520,325);await tick(500);
 }
 assert.equal(await page.evaluate(()=>chapterIndex),0);

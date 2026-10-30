@@ -2,9 +2,9 @@
 
 A Chinese-language pixel-art inspection game about model relay services. Compare orders with upstream receipts, check authorized subcontracting, catch model substitutions, truncated input and overbilling.
 
-[Play in your browser](https://hainahuang729.github.io/token-please/) · [中文说明](README.md)
+[Play in your browser](https://token-please.github.io/) · [中文说明](README.md)
 
-Five chapters, thirty authored orders, ten model-inspired characters and seven masked appearances. Later chapters introduce subtle discrepancies; costumes alone never determine a verdict. Income is measured in fictional token units. No real model APIs are called.
+Five chapters, thirty authored orders, ten model-inspired characters and seven masked appearances. Later chapters introduce subtle discrepancies; costumes alone never determine a verdict. The default paper archive interface includes newspaper interludes, guided evidence comparison, gradual control unlocks and five illustrated endings. Income is measured in fictional token units. No real model APIs are called.
 
 ## Run locally
 

@@ -767,7 +767,7 @@ function hintText() {
   if (B.flash && now < B.flash.t + 3.2) return B.flash.text;
   const e = B.ent, here = e && e.phase === 'here' && e.handed && !B.event, T = S.tut;
   if (S.day === 1) {
-    if (!T.called) return '点左下角闪烁的喇叭，叫下一位';
+    if (!T.called) return '点窗口中央的交单图标，叫下一位';
     if (!here) return '';
     const onDesk = B.docs.some((d) => d.owner === 'ent' && d.big);
     if (!T.dragged && !onDesk) return '把柜台上的证件（左下小图标）拖到右边桌上';
@@ -845,7 +845,7 @@ function composeInspect(g) {
       line(p[0], p[1], q[0], q[1], K.RED_L);
     }
   }
-  for (const b of boxes) outline(b[0] - 2, b[1] - 2, b[2] + 2, b[3] + 2, I.banner&&!I.banner.bad?K.GREEN_L:K.RED_L, 2);
+  for (const b of boxes) outline(b[0] - 2, b[1] - 2, b[2] + 2, b[3] + 2, I.banner?(I.banner.bad?K.RED_L:K.GREEN_L):K.GREY, 2);
   drawButtons();
   const bn = I.banner;
   if (bn) {
@@ -859,6 +859,8 @@ function composeInspect(g) {
       rect(...ASK_BTN, hover ? K.RED : K.RED_D); outline(...ASK_BTN, K.RED_L);
       txt(center(ASK_BTN)[0], 145, T('询问'), 12, K.WHITE, 'ma');
     }
+  } else if (typeof drawCompareGuide === 'function') {
+    drawCompareGuide();
   } else {
     const s = T(I.sel.length ? '再点对应字段，核对是否符合合同' : '比对订单与核验单的对应字段；可单点签名');
     rect(...BANNER_BOX, 'rgba(22,19,19,0.85)'); outline(...BANNER_BOX, K.GREY_D);

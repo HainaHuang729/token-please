@@ -1,0 +1,13 @@
+import {chromium} from 'playwright';import assert from 'node:assert/strict';
+const b=await chromium.launch();const p=await b.newPage({viewport:{width:1280,height:760}}),errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto('http://localhost:8766');await p.waitForFunction(()=>F&&ATLAS_IMG&&typeof archivePaper==='function'&&ARCHIVE_BG.complete&&ARCHIVE_BG.naturalWidth>0);
+assert.equal(await p.evaluate(()=>uiVariant),'paper');
+const click=async(x,y)=>{const q=await p.locator('canvas').boundingBox();await p.mouse.click(q.x+x*q.width/640,q.y+y*q.height/360);};
+const tick=async(ms)=>{for(let i=0;i<ms;i+=100)await p.evaluate(()=>advanceTime(100));};
+await p.waitForTimeout(350);await p.screenshot({path:'output/archive-title.png'});
+await click(320,326);assert.equal(await p.evaluate(()=>showingRoster),true);await p.screenshot({path:'output/archive-roster.png'});await click(320,338);await click(320,300);await p.waitForTimeout(850);await p.screenshot({path:'output/archive-briefing.png'});await click(520,325);assert.equal(await p.evaluate(()=>scene),'booth');
+await p.evaluate(()=>{newGame();chapterIndex=2;setChapterRules();go('booth');B.idx=3;B.ent=newEntrant(relaySpec(CHAPTERS[2].cases[2],202),true);handDocs(B.ent);Object.assign(B.ent.docs[0],{big:true,x:476,y:140});});await click(168,275);await tick(1900);await click(196,275);await tick(1900);await p.waitForTimeout(300);await p.screenshot({path:'output/archive-desk.png'});
+await p.evaluate(()=>{setInspect(true);const a=B.docs.find(d=>d.key==='receipt'),b=B.docs.find(d=>d.key==='log');Object.assign(a,{x:235,y:140});Object.assign(b,{x:465,y:140});B.docs=B.docs.filter(d=>d!==a&&d!==b).concat([a,b]);for(const d of [a,b]){const f=d.doc.fields['上游'];inspectClick(d.x+f[0]+9,d.y+(f[1]+f[3])/2);}});await p.screenshot({path:'output/archive-compare.png'});assert.equal(await p.evaluate(()=>B.insp.banner.title),'回执与日志不一致');
+await p.evaluate(()=>{setInspect(false);toggleRules();});await p.screenshot({path:'output/archive-rules.png'});
+await p.evaluate(()=>{B.correct=5;B.total=6;B.pay=25;B.fines=5;S.stats.correct=14;go('summary');});await p.waitForTimeout(350);await p.screenshot({path:'output/archive-summary.png'});
+await click(320,300);assert.equal(await p.evaluate(()=>scene),'newspaper');await tick(1000);await click(520,329);assert.equal(await p.evaluate(()=>scene),'news');
+await p.reload();assert.equal(await p.evaluate(()=>uiVariant),'paper');assert.deepEqual(errors,[]);await b.close();console.log('PASS archive default, five screens, three-document comparison, chapter navigation, persistence');

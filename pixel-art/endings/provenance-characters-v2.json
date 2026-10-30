@@ -1,0 +1,69 @@
+{
+  "generator": "built-in image_gen",
+  "date": "2026-10-30",
+  "purpose": "User requested visible characters in later ending illustrations. Original plates retained.",
+  "assets": [
+    {
+      "id": "steady",
+      "refs": [
+        "claude",
+        "gpt"
+      ],
+      "scene": "Scene: calm shift handover at blue dawn. Image 2 is Claude: long orange hair, sunflower hairpin, white-and-orange floral outfit. Image 3 is GPT: pale lavender hair, curled purple horns, white/lavender outfit. Both characters are clearly visible from waist up on opposite sides of the wooden counter, faces in three-quarter view. Tired but relieved Claude passes one brass key to GPT's open hand above the logbook; two tea cups and amber lamp remain. Show both complete heads without cropping. Main focus: their faces and the small key exchange. No anonymous office workers.",
+      "prompt": "Use case: illustration-story / edit. Image 1 is the existing ending scene to revise; following images are character identity references. Preserve its midnight paper archive setting, wooden counter, paper folders, brass lamp, muted navy/walnut/ivory palette and landscape 16:9 ratio. Recompose as character-led 16-bit pixel art: visible square clusters, limited flat colors, restrained dithering, not smooth HD anime. Faces, hair and signature outfits must remain recognizable at a 288x162 thumbnail: show heads and torsos clearly, characters occupy roughly 55-70% of frame height in the mid/foreground, never just hands or distant silhouettes. Modest adult character designs. No text, lettering, UI, borders, logos or watermarks. Keep coherent anatomy and natural physical actions.\nScene: calm shift handover at blue dawn. Image 2 is Claude: long orange hair, sunflower hairpin, white-and-orange floral outfit. Image 3 is GPT: pale lavender hair, curled purple horns, white/lavender outfit. Both characters are clearly visible from waist up on opposite sides of the wooden counter, faces in three-quarter view. Tired but relieved Claude passes one brass key to GPT's open hand above the logbook; two tea cups and amber lamp remain. Show both complete heads without cropping. Main focus: their faces and the small key exchange. No anonymous office workers.",
+      "paths": [
+        "pixel-art/endings/steady.png",
+        "pixel-art/ai-cast/animations/claude/frame-0.png",
+        "pixel-art/ai-cast/animations/gpt/frame-0.png"
+      ],
+      "source": "exec-821e707f-80e9-40f5-88cc-75b6b26fb712.png",
+      "file": "steady-characters-v2.png"
+    },
+    {
+      "id": "leak",
+      "refs": [
+        "gpt",
+        "claude"
+      ],
+      "scene": "Scene: counterfeit passage, fictional game bad ending. Image 2 is GPT: pale lavender hair, curled purple horns, white/lavender outfit. Image 3 is Claude: long orange hair, sunflower hairpin and orange-white outfit. Replace the distant anonymous masked crowd with a single clearly visible GPT character in the near foreground, turning back with an uneasy expression as she exits the red-lit open service gate. She has just lowered a rigid orange-haired Claude face mask, holding it beside her shoulder by its edge; visible mask strap makes it unmistakably a disguise prop, not a second head. Her actual lavender hair, horns and face remain unobscured. A worried Claude is behind the counter in the middle ground, looking down at careless green approval stamps and mismatched files. Strong readable silhouettes, red warning lamp and cables, no violence or horror. Both recognizable faces must be visible.",
+      "prompt": "Use case: illustration-story / edit. Image 1 is the existing ending scene to revise; following images are character identity references. Preserve its midnight paper archive setting, wooden counter, paper folders, brass lamp, muted navy/walnut/ivory palette and landscape 16:9 ratio. Recompose as character-led 16-bit pixel art: visible square clusters, limited flat colors, restrained dithering, not smooth HD anime. Faces, hair and signature outfits must remain recognizable at a 288x162 thumbnail: show heads and torsos clearly, characters occupy roughly 55-70% of frame height in the mid/foreground, never just hands or distant silhouettes. Modest adult character designs. No text, lettering, UI, borders, logos or watermarks. Keep coherent anatomy and natural physical actions.\nScene: counterfeit passage, fictional game bad ending. Image 2 is GPT: pale lavender hair, curled purple horns, white/lavender outfit. Image 3 is Claude: long orange hair, sunflower hairpin and orange-white outfit. Replace the distant anonymous masked crowd with a single clearly visible GPT character in the near foreground, turning back with an uneasy expression as she exits the red-lit open service gate. She has just lowered a rigid orange-haired Claude face mask, holding it beside her shoulder by its edge; visible mask strap makes it unmistakably a disguise prop, not a second head. Her actual lavender hair, horns and face remain unobscured. A worried Claude is behind the counter in the middle ground, looking down at careless green approval stamps and mismatched files. Strong readable silhouettes, red warning lamp and cables, no violence or horror. Both recognizable faces must be visible.",
+      "paths": [
+        "pixel-art/endings/leak.png",
+        "pixel-art/ai-cast/animations/gpt/frame-0.png",
+        "pixel-art/ai-cast/animations/claude/frame-0.png"
+      ],
+      "source": "exec-373bd296-a587-4214-94a5-a43a046f06de.png",
+      "file": "leak-characters-v2.png"
+    },
+    {
+      "id": "closed",
+      "refs": [
+        "claude"
+      ],
+      "scene": "Scene: the waiting room has emptied after too many rejections. Image 2 is Claude: orange hair, sunflower hairpin, orange-and-white floral outfit. Add a clearly visible waist-up Claude seated ALONE behind the near inspection desk, tired regretful three-quarter face, shoulders lowered, holding one rejected folder loosely. Preserve the empty visitor chairs beyond the glass and rainy blue-purple window; there must still be no visitors in the waiting area. Red return stamp and rejected files remain foreground. The emotional focus is Claude's visible face, contrasted with empty seats behind her. Do not hide her in darkness.",
+      "prompt": "Use case: illustration-story / edit. Image 1 is the existing ending scene to revise; following images are character identity references. Preserve its midnight paper archive setting, wooden counter, paper folders, brass lamp, muted navy/walnut/ivory palette and landscape 16:9 ratio. Recompose as character-led 16-bit pixel art: visible square clusters, limited flat colors, restrained dithering, not smooth HD anime. Faces, hair and signature outfits must remain recognizable at a 288x162 thumbnail: show heads and torsos clearly, characters occupy roughly 55-70% of frame height in the mid/foreground, never just hands or distant silhouettes. Modest adult character designs. No text, lettering, UI, borders, logos or watermarks. Keep coherent anatomy and natural physical actions.\nScene: the waiting room has emptied after too many rejections. Image 2 is Claude: orange hair, sunflower hairpin, orange-and-white floral outfit. Add a clearly visible waist-up Claude seated ALONE behind the near inspection desk, tired regretful three-quarter face, shoulders lowered, holding one rejected folder loosely. Preserve the empty visitor chairs beyond the glass and rainy blue-purple window; there must still be no visitors in the waiting area. Red return stamp and rejected files remain foreground. The emotional focus is Claude's visible face, contrasted with empty seats behind her. Do not hide her in darkness.",
+      "paths": [
+        "pixel-art/endings/closed.png",
+        "pixel-art/ai-cast/animations/claude/frame-0.png"
+      ],
+      "source": "exec-36371718-3a82-44e1-9d54-0469d8782068.png",
+      "file": "closed-characters-v2.png"
+    },
+    {
+      "id": "training",
+      "refs": [
+        "deepseek",
+        "claude"
+      ],
+      "scene": "Scene: back tomorrow, patient remedial practice under a warm desk lamp. Image 2 is DeepSeek: blue hair, blue bow, small whale-like side fins, navy-and-white maid uniform and white headband. Image 3 is Claude: orange hair, sunflower hairpin and orange-white outfit. Replace the first-person hands-only framing with an eye-level three-quarter view: DeepSeek sits at the desk with her face and upper body clearly visible, carefully comparing two forms and holding a small green stamp. Claude sits beside her with her own full head visible, gently pointing at a mismatched field rather than scolding. Both adult characters look thoughtful and encouraged, all hands anatomically coherent. Preserve notebook, blank badge, stamps and amber lamp. Faces and interaction are primary; paperwork secondary.",
+      "prompt": "Use case: illustration-story / edit. Image 1 is the existing ending scene to revise; following images are character identity references. Preserve its midnight paper archive setting, wooden counter, paper folders, brass lamp, muted navy/walnut/ivory palette and landscape 16:9 ratio. Recompose as character-led 16-bit pixel art: visible square clusters, limited flat colors, restrained dithering, not smooth HD anime. Faces, hair and signature outfits must remain recognizable at a 288x162 thumbnail: show heads and torsos clearly, characters occupy roughly 55-70% of frame height in the mid/foreground, never just hands or distant silhouettes. Modest adult character designs. No text, lettering, UI, borders, logos or watermarks. Keep coherent anatomy and natural physical actions.\nScene: back tomorrow, patient remedial practice under a warm desk lamp. Image 2 is DeepSeek: blue hair, blue bow, small whale-like side fins, navy-and-white maid uniform and white headband. Image 3 is Claude: orange hair, sunflower hairpin and orange-white outfit. Replace the first-person hands-only framing with an eye-level three-quarter view: DeepSeek sits at the desk with her face and upper body clearly visible, carefully comparing two forms and holding a small green stamp. Claude sits beside her with her own full head visible, gently pointing at a mismatched field rather than scolding. Both adult characters look thoughtful and encouraged, all hands anatomically coherent. Preserve notebook, blank badge, stamps and amber lamp. Faces and interaction are primary; paperwork secondary.",
+      "paths": [
+        "pixel-art/endings/training.png",
+        "pixel-art/ai-cast/animations/deepseek/frame-0.png",
+        "pixel-art/ai-cast/animations/claude/frame-0.png"
+      ],
+      "source": "exec-0967ad4d-0b25-4572-be0b-f77d0424006a.png",
+      "file": "training-characters-v2.png"
+    }
+  ]
+}

@@ -165,7 +165,24 @@ class Citation {
   constructor(lines) {
     this.lines = lines.map((s) => T(s));
     this.w = 168;
-    this.h = 26 + 13 * lines.length + 6;
+    this.layout = [];
+    let y = 22, item = 0;
+    this.lines.forEach((s, i) => {
+      const footer = i === this.lines.length - 1 && /token/.test(s);
+      const reason = i > 0 && !footer;
+      for (const part of (reason ? s.split(/[；;\n]+/) : [s])) {
+        if (!part.trim()) continue;
+        const label = reason ? `${++item}.` : '';
+        const x = reason ? 22 : 8;
+        if (footer) y += 4;
+        wrap(part.trim(), 10, this.w - x - 8).forEach((line, row) => {
+          this.layout.push({text: line, label: row === 0 ? label : '', x, y, footer});
+          y += 13;
+        });
+        if (reason) y += 3;
+      }
+    });
+    this.h = y + 6;
     this.icon = ['card', [226, 184, 176]];
     this.fields = {};
   }
@@ -176,8 +193,10 @@ class Citation {
     rect(x, y, x + this.w - 1, y + 16, K.RED_D);
     txt(x + 6, y + 4, T('验收差错单'), 10, K.WHITE);
     txt(x + this.w - 6, y + 6, 'REVIEW', 8, 'rgb(226,184,176)', 'ra');
-    this.lines.forEach((s, i) => {
-      txt(x + 8, y + 22 + i * 13, s, tw(s, 10) > this.w - 14 ? 8 : 10, i === this.lines.length - 1 ? K.RED_D : K.TEXT);
+    this.layout.forEach((row) => {
+      const color = row.footer ? K.RED_D : K.TEXT;
+      if (row.label) txt(x + 8, y + row.y, row.label, 10, color);
+      txt(x + row.x, y + row.y, row.text, 10, color);
     });
   }
 }
@@ -253,7 +272,7 @@ class Rulebook {
     this.w = 200;
     this.icon = ['book', C.BOOK];
     const rules = RULES.filter((r) => r.day <= day);
-    this.npages = day >= 3 ? 2 : 1;
+    this.npages = Math.max(day >= 3 ? 2 : 1, ...rules.map(r => r.page + 1));
     this.pages = [];
     for (let p = 0; p < this.npages; p++) {
       const L = [];

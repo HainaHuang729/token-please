@@ -1,0 +1,54 @@
+{
+  "generator": "built-in image_gen",
+  "date": "2026-10-29",
+  "usage": "Five campaign ending illustrations. Original generated PNGs; scaled only at runtime.",
+  "assets": [
+    {
+      "id": "light",
+      "source": "exec-31e0f35b-dae3-42a7-abc7-607d8d681e00.png",
+      "file": "light.png"
+    },
+    {
+      "id": "steady",
+      "source": "exec-6d54b1d8-58ff-45b5-9aaf-26e8db543391.png",
+      "file": "steady.png"
+    },
+    {
+      "id": "leak",
+      "source": "exec-66d70d52-8912-4d4e-b238-3f7ce630cf92.png",
+      "file": "leak.png"
+    },
+    {
+      "id": "closed",
+      "source": "exec-501bdd89-3551-418f-8faa-29f63c40cc9f.png",
+      "file": "closed.png"
+    },
+    {
+      "id": "training",
+      "source": "exec-3f212be1-df30-4a12-8928-0f6d91d7755c.png",
+      "file": "training.png"
+    }
+  ],
+  "prompts": [
+    {
+      "id": "light",
+      "prompt": "Use case: illustration-story. Asset: one standalone ending illustration for a Chinese indie pixel-art game about inspecting AI model deliveries in a midnight paper archive office. Landscape 16:9 composition. Crisp authentic 16-bit pixel art with clearly visible square pixel clusters, restrained dithering, flat pixel shading, limited palette of dark navy, walnut brown, old ivory paper, tarnished brass, muted sage and brick red. Not HD anime, not painterly, no smooth gradients. Same setting: wooden inspection counter, glass partition, filing shelves, brass desk lamp, paperwork and a small old terminal. Entire frame is illustration, no interface, no borders, no text, no lettering, no logos, no watermarks. Readable silhouettes and focal subject at a small 260x146 game display.\nScene: Ending 'Last light': hopeful dawn. The inspection work is complete, neatly stacked approved folders on the wooden counter, the last brass lamp still glows. Soft peach sunrise beyond the window. A small adult blue-haired whale-themed maid with a navy-and-white modest maid uniform places a steaming bowl of WHITE RICE by the window. Her whale-tail silhouette and blue hair bow are recognizable but character is part of the environment, not a large portrait. Quiet relief, warm golden light against sage shadows. Strong focal point is lamp and rice bowl, calm balanced composition."
+    },
+    {
+      "id": "steady",
+      "prompt": "Use case: illustration-story. Asset: one standalone ending illustration for a Chinese indie pixel-art game about inspecting AI model deliveries in a midnight paper archive office. Landscape 16:9 composition. Crisp authentic 16-bit pixel art with clearly visible square pixel clusters, restrained dithering, flat pixel shading, limited palette of dark navy, walnut brown, old ivory paper, tarnished brass, muted sage and brick red. Not HD anime, not painterly, no smooth gradients. Same setting: wooden inspection counter, glass partition, filing shelves, brass desk lamp, paperwork and a small old terminal. Entire frame is illustration, no interface, no borders, no text, no lettering, no logos, no watermarks. Readable silhouettes and focal subject at a small 260x146 game display.\nScene: Ending 'Shift handover': calm workday transition. Close environmental view across the counter, two anonymous adult clerks' hands passing a single brass key above an orderly paper logbook, a freshly refilled tea cup beside a cooling old cup. One departing clerk seen only from the back in a dark jacket; incoming clerk cropped at shoulder. Blue morning window light with modest amber desk light, muted teal and ivory. Competent everyday relief, distinct from a triumphant sunny scene. Key transfer is the clear focal action."
+    },
+    {
+      "id": "leak",
+      "prompt": "Use case: illustration-story. Asset: one standalone ending illustration for a Chinese indie pixel-art game about inspecting AI model deliveries in a midnight paper archive office. Landscape 16:9 composition. Crisp authentic 16-bit pixel art with clearly visible square pixel clusters, restrained dithering, flat pixel shading, limited palette of dark navy, walnut brown, old ivory paper, tarnished brass, muted sage and brick red. Not HD anime, not painterly, no smooth gradients. Same setting: wooden inspection counter, glass partition, filing shelves, brass desk lamp, paperwork and a small old terminal. Entire frame is illustration, no interface, no borders, no text, no lettering, no logos, no watermarks. Readable silhouettes and focal subject at a small 260x146 game display.\nScene: Ending 'Counterfeit passage': unsettling consequences of missed fraud. View of the same inspection counter at night, careless green approval stamps lying among mixed-up delivery papers, cracked-open service gate behind glass. Three small anonymous shadowy visitors departing through it, holding mismatched simple paper theatrical masks beside their faces; thin data cables disappear through the open gate. A red warning lamp reflects in the glass, dark navy and brick-red palette with sickly green approval light. Symbolic deception and neglected paperwork, no violence, no police, no horror. Distinct wide diagonal composition."
+    },
+    {
+      "id": "closed",
+      "prompt": "Use case: illustration-story. Asset: one standalone ending illustration for a Chinese indie pixel-art game about inspecting AI model deliveries in a midnight paper archive office. Landscape 16:9 composition. Crisp authentic 16-bit pixel art with clearly visible square pixel clusters, restrained dithering, flat pixel shading, limited palette of dark navy, walnut brown, old ivory paper, tarnished brass, muted sage and brick red. Not HD anime, not painterly, no smooth gradients. Same setting: wooden inspection counter, glass partition, filing shelves, brass desk lamp, paperwork and a small old terminal. Entire frame is illustration, no interface, no borders, no text, no lettering, no logos, no watermarks. Readable silhouettes and focal subject at a small 260x146 game display.\nScene: Ending 'Empty waiting room': consequence of rejecting legitimate visitors. Entire scene is an empty waiting room beyond a closed archive service window, row of three unoccupied wooden chairs, rain streaking tall glass, a stack of rejected application folders and an unused red return stamp on the counter foreground. A single abandoned folded umbrella near the empty chairs. No people. Deep slate blue and dusty purple, weak cold window light, dark brass fixtures. Wide quiet negative space, loneliness rather than menace, view into the room from the desk."
+    },
+    {
+      "id": "training",
+      "prompt": "Use case: illustration-story. Asset: one standalone ending illustration for a Chinese indie pixel-art game about inspecting AI model deliveries in a midnight paper archive office. Landscape 16:9 composition. Crisp authentic 16-bit pixel art with clearly visible square pixel clusters, restrained dithering, flat pixel shading, limited palette of dark navy, walnut brown, old ivory paper, tarnished brass, muted sage and brick red. Not HD anime, not painterly, no smooth gradients. Same setting: wooden inspection counter, glass partition, filing shelves, brass desk lamp, paperwork and a small old terminal. Entire frame is illustration, no interface, no borders, no text, no lettering, no logos, no watermarks. Readable silhouettes and focal subject at a small 260x146 game display.\nScene: Ending 'Back tomorrow': hopeful remedial training. Close overhead-diagonal view of a novice clerk's wooden desk under a small amber lamp late at night. Adult hands carefully aligning two paper forms side by side and practicing with green and red rubber stamps, a notebook of simple geometric diagrams without letters, a modest blank ID badge left safely next to the notebook. One sheet has several messy practice stamp shapes while the next is tidier. Warm ochre, old ivory, walnut and quiet navy; humble persistence, no humiliation. Desk and practicing hands dominate the composition."
+    }
+  ]
+}

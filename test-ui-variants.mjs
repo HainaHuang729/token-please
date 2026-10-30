@@ -7,7 +7,7 @@ const click=async(x,y)=>p.mouse.click(...await pos(x,y));
 const drag=async(x,y,a,c)=>{await p.mouse.move(...await pos(x,y));await p.mouse.down();await p.mouse.move(...await pos(a,c),{steps:10});await p.mouse.up();};
 for(const design of ['terminal','paper','dispatch']){
  await p.click('[data-variant="'+design+'"]');await p.evaluate(()=>{newGame();go('title');});await p.waitForTimeout(300);await p.screenshot({path:'output/design-'+design+'-title.png'});
- await click(320,300);await p.waitForTimeout(800);assert.equal(await p.evaluate(()=>scene),'news',design+' briefing');await click(520,325);await p.waitForTimeout(300);assert.equal(await p.evaluate(()=>scene),'booth',design+' desk');await click(15,298);await tick(4500);
+ await click(320,300);await p.waitForTimeout(800);assert.equal(await p.evaluate(()=>scene),'news',design+' briefing');await click(520,325);await p.waitForTimeout(300);assert.equal(await p.evaluate(()=>scene),'booth',design+' desk');await click(109,199);await tick(4500);
  assert.equal(await p.evaluate(()=>B.ent.spec.person),'GPT');await drag(54,270,465,200);await click(168,275);await tick(2200);assert.equal(await p.evaluate(()=>B.ent.verified),true);
  const before=await p.evaluate(()=>JSON.stringify({order:B.ent.spec.id,docs:B.docs.map(d=>[d.key,d.x,d.y]),idx:B.idx}));
  await p.evaluate(()=>{const current=uiVariant;setUiVariant(current==='paper'?'terminal':'paper');setUiVariant(current);});

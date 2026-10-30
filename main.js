@@ -7,7 +7,7 @@ function go(name) {
   SFX.ambient(name === 'booth');
   if (name === 'title') SFX.play('title', 0.8);
   if (name === 'daycard') SFX.play('day_hit');
-  if (name === 'news') { SFX.play('whoosh'); SFX.paper(31); }
+  if (name === 'news' || name === 'newspaper') { SFX.play('whoosh'); SFX.paper(31); }
   if (name === 'summary') SFX.play('select', 0.7);
   if (name === 'end') SFX.play('end', 0.8);
   if (name === 'booth') startDay();
@@ -52,6 +52,7 @@ function boothInput(x, y) {
     else if (inBox(x, y, RUSH_DENY)) rushPick('deny');
     return;
   }
+  if (!B.ent && inBox(x, y, SPEAKER)) { if (B.insp.on) setInspect(false); callNext(); return; }
   boothDown(x, y);
 }
 
@@ -137,9 +138,11 @@ function dragEnd(x, y) {
 }
 
 function sceneClick(x, y) {
+  if (scene === 'campaign-ending') { campaignEndingClick(x,y); return; }
   if (scene === 'boot') { langClick(x, y); return; }
   if (scene === 'intro') { go('title'); return; }
   if (scene === 'title') { titleClick(x, y); return; }
+  if (scene === 'newspaper') { if (st() > 0.6 && inBox(x, y, [430,315,610,343])) go('news'); return; }
   if (scene === 'news' && st() > 0.6) { go('booth'); return; }
   if (scene === 'summary') { summaryClick(x, y); return; }
   if (scene === 'erased' && st() > 1) { go('end'); return; }
@@ -170,6 +173,8 @@ function render() {
   else if (scene === 'erased') drawTyped(ERASED_LINES);
   else if (scene === 'title') drawTitle(t);
   else if (scene === 'daycard') drawDayCard(t);
+  else if (scene === 'newspaper') drawRelayNews(t);
+  else if (scene === 'campaign-ending') drawCampaignEnding();
   else if (scene === 'news') drawNews(t);
   else if (scene === 'booth') { if (inChat()) drawChat(); else drawBooth(); }
   else if (scene === 'summary') drawSummary(t);

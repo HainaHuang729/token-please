@@ -6,7 +6,7 @@ assert.equal(await p.evaluate(()=>['Tibo','被爱长大','完整的一生','查 
 const overflow=await p.evaluate(()=>CHAPTERS.flatMap(ch=>ch.cases.flatMap(c=>[c.line,c.reply,c.approveLine,c.denyLine])).filter(s=>tw(s,8)>176));assert.deepEqual(overflow,[]);
 assert.equal(await p.evaluate(()=>new Set(CHAPTERS.flatMap(ch=>ch.cases.map(c=>c.line))).size),30);
 for(const [ch,idx,name] of [[0,1,'whale'],[1,1,'flagship'],[3,1,'billing']]){
- await p.evaluate(({ch,idx})=>{newGame();chapterIndex=ch;setChapterRules();go('booth');B.idx=idx;callNext();},{ch,idx});
+ await p.evaluate(({ch,idx})=>{newGame();chapterIndex=ch;setChapterRules();go('booth');B.queue=CHAPTERS[ch].cases.map((c,i)=>relaySpec(c,ch*100+i));B.idx=idx;callNext();},{ch,idx});
  for(let i=0;i<45;i++)await p.evaluate(()=>advanceTime(100));
  await p.evaluate(()=>verifyNight());for(let i=0;i<25;i++)await p.evaluate(()=>advanceTime(100));
  await p.screenshot({path:'output/banter-'+name+'.png'});

@@ -8,7 +8,7 @@ async function click(x,y){const b=await page.locator('canvas').boundingBox();awa
 async function tick(ms){for(let i=0;i<ms;i+=100)await page.evaluate(()=>advanceTime(100));}
 await click(320,300);await tick(1000);assert.equal(await page.evaluate(()=>scene),'news');
 await page.screenshot({path:'output/mobile-briefing.png'});
-await click(520,325);await click(16,300);await tick(4000);
+await click(520,325);await click(109,199);await tick(4000);
 assert.equal(await page.evaluate(()=>B.ent.spec.person),'GPT');
 await click(168,275);await tick(1200);assert.equal(await page.evaluate(()=>B.ent.verified),true);
 await page.screenshot({path:'output/mobile-console.png'});

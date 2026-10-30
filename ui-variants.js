@@ -22,7 +22,7 @@ body{box-sizing:border-box;padding-top:${designPreview?38:0}px}#design-switcher{
 @media(max-width:700px){#design-switcher{padding-left:3px;gap:1px}#design-switcher button{font-size:10px;padding:5px 4px}.ui{top:9px;opacity:1}.ui button{font-size:9px;padding:2px 3px}}
 `;document.head.appendChild(designStyle);
 fit=function(){const s=Math.min(innerWidth/W,(innerHeight-(designPreview?40:0))/H);canvasEl.style.width=Math.floor(W*s)+'px';canvasEl.style.height=Math.floor(H*s)+'px';};addEventListener('resize',()=>{if(canvasEl)fit();});
-let preferred;try{preferred=localStorage.getItem('token-please-design');}catch{}setUiVariant(designPreview?(new URLSearchParams(location.search).get('design')||preferred||'terminal'):'terminal');
+let preferred;try{preferred=localStorage.getItem('token-please-design');}catch{}setUiVariant(designPreview?(new URLSearchParams(location.search).get('design')||preferred||'paper'):'paper');
 if(typeof canvasEl!=='undefined'&&canvasEl)fit();
 drawBg=function(){
  rect(0,0,639,359,UI.desk);rect(0,0,639,26,UI.navy);txt(12,8,'Token, Please!',10,UI.white);
@@ -77,7 +77,7 @@ drawWindow=function(){
  else{rect(31,0,171,128,'#37546d');line(31,0,31,128,'#58758b');line(171,0,171,128,'#58758b');}
  const e=B.ent,ex=entrantX(e);
  if(e&&ex!==null){const m=portraitMotionState(e);pixelPortrait(exprKey(e),motionPreference.matches?11:ex-90,m.offset,180,128,false,e.spec.contract?.mask,m);}
- else{txt(101,54,paper?'等候交单':'通讯待机',12,paper?UI.ink:UI.white,'ma');txt(101,78,'点击左下角接单',8,paper?UI.muted:'#a0bbc8','ma');}
+ else{drawNextOrderIcon();}
  rect(6,6,9,9,e?UI.green:UI.muted);txt(14,5,e?'接入中':'待机',8,paper?UI.ink:UI.white);
  G.restore();outline(...WIN,UI.line);
 };
@@ -93,7 +93,6 @@ uiButton=function(box,label,active=false,tone=UI.navy){
 // Theme-specific dialogue materials and preserved return target.
 drawBoothLower=function(){
  const paper=uiVariant==='paper',idle=!B.ent&&!B.ending&&B.idx<B.queue.length;
- rect(6,288,26,321,idle?UI.cyan:UI.navy);txt(16,292,'接',10,UI.white,'ma');txt(16,307,'单',10,UI.white,'ma');
  for(const {ln,size,box} of lineBoxes()){
   rect(...box,paper?UI.paper:UI.navy);
   rect(box[0],box[1],box[0]+1,box[3],ln.who==='C'?UI.cyan:UI.amber);
@@ -103,7 +102,6 @@ drawBoothLower=function(){
  if(!B.ent)txt(41,270,'待收件',8,'#bbcfcc');else if(B.docs.some(d=>d.owner==='ent'&&!d.big))txt(72,270,'拖到右侧',8,'#bbcfcc');
  const e=B.ent,step=!e?0:!e.verified?1:!e.decided?2:3;
  ['接单','取证','比对','归还'].forEach((s,i)=>{const x=9+i*53,lit=i===step;rect(x,345,x+44,357,lit?UI.cyan:UI.navy);txt(x+22,348,s,8,lit?UI.white:'#a5b6b6','ma');});
- if(idle)outline(5,287,27,322,UI.cyan);
  if(drag&&e&&drag.d.owner==='ent'&&drag.d.key===e.spec.primary){rect(31,239,209,261,e.decided?UI.green:UI.navy);outline(31,239,209,261,UI.white);txt(120,245,e.decided?'拖回此处，归还订单':'先盖章，再归还订单',10,UI.white,'ma');}
 };
 const themedCard=Card.prototype.draw;

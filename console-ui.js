@@ -1,8 +1,22 @@
 'use strict';
 // Visual system: a dispatch console, preserving the document engine's coordinates.
-SPEAKER.splice(0,4,6,288,26,321);
+SPEAKER.splice(0,4,85,179,133,219);
 const UI={ink:'#20334e',muted:'#64768c',line:'#b8c8da',paper:'#f7faff',desk:'#dce6f0',navy:'#213958',deep:'#172b46',blue:'#345fc4',cyan:'#147d91',lavender:'#745ea8',green:'#237c66',red:'#b75359',white:'#f4f8ff',amber:'#e5bb5d'};
 Object.assign(K,{INK:UI.deep,DESK:UI.desk,DESK_D:'#b2c3d5',DESK_L:'#e9eff6',METAL_D:UI.navy,METAL_L:'#6b87a8',WHITE:UI.white,GREY:'#a4bad1',GREY_D:UI.muted,CLAUDE:UI.blue,CLAUDE_L:'#a9dfe8',GREEN:UI.green,GREEN_D:'#1a5d50',GREEN_L:'#8bc8b0',RED:UI.red,RED_D:'#8d3e49',RED_L:'#f0a0a5',PAPER:UI.paper,TEXT:UI.ink,TEXT_L:UI.muted,BOOK:UI.navy,BOOK_L:UI.blue});
+
+// Pixel document + incoming arrow, centered in the empty service window.
+function drawNextOrderIcon(){
+ const enabled=!B.ent&&!B.event&&!B.cut&&!B.closeup&&!B.ending&&B.idx<B.queue.length;
+ if(!enabled)return;
+ const hover=ptr.mouse&&inBox(ptr.x,ptr.y,SPEAKER),dy=hover&&ptr.down?1:0;
+ rect(79,48+dy,127,87+dy,'#172b30');
+ rect(77,45+dy,125,85+dy,hover?UI.cyan:UI.navy);outline(77,45+dy,125,85+dy,hover?UI.white:UI.amber);
+ rect(99,53+dy,113,76+dy,UI.paper);rect(103,59+dy,109,60+dy,UI.muted);rect(103,65+dy,109,66+dy,UI.muted);
+ rect(84,64+dy,99,66+dy,UI.amber);
+ line(94,59+dy,100,65+dy,UI.amber);line(94,71+dy,100,65+dy,UI.amber);
+ if(hover)txt(101,96,'下一位，请交单',8,UI.white,'ma');
+}
+
 function uiPortrait(key,x,y,w,h,expr='neutral',mask=null){
  const a=SPR[key+':'+expr]||SPR[key+':neutral'];
  if(a)pixelPortrait(key+':'+expr,x,y,w,h,true,mask);
@@ -51,7 +65,7 @@ drawWindow=function(){
 };
 // Preserve per-field hit areas while giving orders and upstream records distinct identities.
 Card.prototype.draw=function(x,y){
- const receipt=this.title.includes('回执'),accent=receipt?UI.lavender:UI.cyan;
+ const receipt=this.title.includes('回执'),accent=this.title.includes('日志')?UI.amber:receipt?UI.lavender:UI.cyan;
  rect(x+2,y+3,x+this.w+1,y+this.h+2,'#b2c2d4');rect(x,y,x+this.w-1,y+this.h-1,UI.paper);
  outline(x,y,x+this.w-1,y+this.h-1,UI.line);rect(x,y,x+this.w-1,y+15,accent);
  txt(x+6,y+4,this.title,10,UI.white);
